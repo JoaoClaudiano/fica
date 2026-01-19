@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <title>Caso do Aluno · FICA</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <link rel="stylesheet" href="../../styles/base.css" />
+  <link rel="stylesheet" href="../../styles/themes.css" />
+  <link rel="stylesheet" href="../../styles/accessibility.css" />
+</head>
+<body>
+
+  <a href="#main" class="skip-link">Pular para o conteúdo</a>
+
+  <header class="app-header">
+    <h1 class="logo">FICA</h1>
+    <a href="dashboard.html" class="btn small secondary">← Voltar</a>
+  </header>
+
+  <main id="main">
+
+    <!-- IDENTIDADE DO ALUNO -->
+    <section class="student-header">
+      <h2>Maria Silva</h2>
+      <p>8º ano · Turma B</p>
+
+      <div class="risk-indicator high">
+        <strong>Risco alto</strong>
+        <span>atenção prioritária</span>
+      </div>
+    </section>
+
+    <!-- EXPLICAÇÃO DO RISCO -->
+    <section>
+      <h3>Por que este alerta foi gerado?</h3>
+      <ul class="risk-explanation">
+        <li>📉 4 faltas nas últimas 2 semanas</li>
+        <li>😟 Bem-estar negativo registrado</li>
+        <li>📚 Queda recente de desempenho</li>
+      </ul>
+      <p class="muted">
+        Este índice é um apoio à decisão e não substitui a escuta ativa do aluno.
+      </p>
+    </section>
+
+    <!-- LINHA DO TEMPO -->
+    <section>
+      <h3>Histórico de acompanhamento</h3>
+
+      <div class="timeline">
+
+        <article class="timeline-item">
+          <span class="date">12/03</span>
+          <div>
+            <strong>Conversou com a aluna</strong>
+            <p>Relatou dificuldades familiares recentes.</p>
+          </div>
+        </article>
+
+        <article class="timeline-item">
+          <span class="date">18/03</span>
+          <div>
+            <strong>Contato com responsável</strong>
+            <p>Mãe informou mudança de rotina em casa.</p>
+          </div>
+        </article>
+
+      </div>
+    </section>
+
+    <!-- REGISTRAR NOVA AÇÃO -->
+    <section>
+      <h3>Registrar nova ação</h3>
+
+      <form class="action-form">
+        <label>
+          Tipo de ação
+          <select>
+            <option>Conversou com aluno</option>
+            <option>Contato com família</option>
+            <option>Encaminhamento pedagógico</option>
+            <option>Apoio socioemocional</option>
+          </select>
+        </label>
+
+        <label>
+          Observações
+          <textarea rows="3" placeholder="Descreva brevemente..."></textarea>
+        </label>
+
+        <button class="btn primary">Salvar ação</button>
+      </form>
+    </section>
+
+  </main>
+
+  <footer class="app-footer">
+    <p>Cuidar também é registrar.</p>
+  </footer>
+
+  <script src="../../scripts/app.js"></script>
+</body>
+</html>
