@@ -236,7 +236,16 @@ main {
   color: #166534;
 }
 
-
+.notification-banner {
+  background: #e0f2fe;
+  color: #075985;
+  padding: 1rem;
+  text-align: center;
+  font-weight: 500;
+  position: sticky;
+  top: 0;
+  z-index: 999;
+}
 
 
 
