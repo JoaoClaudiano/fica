@@ -226,6 +226,19 @@ main {
   flex-direction: column;
   font-size: 0.9rem;
 }
+.risk-indicator.moderado {
+  background: #fef3c7;
+  color: #92400e;
+}
+
+.risk-indicator.baixo {
+  background: #dcfce7;
+  color: #166534;
+}
+
+
+
+
 
 
 
