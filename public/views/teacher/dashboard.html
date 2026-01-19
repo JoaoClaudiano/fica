@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <title>Painel do Professor · FICA</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <link rel="stylesheet" href="../../styles/base.css" />
+  <link rel="stylesheet" href="../../styles/themes.css" />
+  <link rel="stylesheet" href="../../styles/accessibility.css" />
+</head>
+<body>
+
+  <a href="#main" class="skip-link">Pular para o conteúdo</a>
+
+  <header class="app-header">
+    <h1 class="logo">FICA</h1>
+    <button id="toggle-theme" aria-label="Alternar modo de cor">🌓</button>
+  </header>
+
+  <main id="main">
+
+    <!-- RESUMO -->
+    <section>
+      <h2>Visão geral da turma</h2>
+
+      <div class="summary-grid">
+        <div class="summary-card risk-high">
+          <strong>3</strong>
+          <span>Alunos em alto risco</span>
+        </div>
+
+        <div class="summary-card risk-medium">
+          <strong>7</strong>
+          <span>Risco moderado</span>
+        </div>
+
+        <div class="summary-card">
+          <strong>22</strong>
+          <span>Total de alunos</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- ALERTAS -->
+    <section>
+      <h3>Alertas prioritários</h3>
+
+      <article class="alert-card high">
+        <h4>Maria S.</h4>
+        <p>
+          Faltas frequentes + bem-estar negativo
+        </p>
+        <button class="btn small">Ver caso</button>
+      </article>
+
+      <article class="alert-card medium">
+        <h4>João P.</h4>
+        <p>
+          Queda de desempenho recente
+        </p>
+        <button class="btn small">Ver caso</button>
+      </article>
+    </section>
+
+    <!-- AÇÕES RÁPIDAS -->
+    <section>
+      <h3>Ações rápidas</h3>
+
+      <div class="quick-actions">
+        <button class="btn secondary">Registrar conversa</button>
+        <button class="btn secondary">Contatar família</button>
+        <button class="btn secondary">Encaminhar apoio</button>
+      </div>
+    </section>
+
+  </main>
+
+  <footer class="app-footer">
+    <p>Cuidado não é punição. É acompanhamento.</p>
+  </footer>
+
+  <script src="../../scripts/app.js"></script>
+</body>
+</html>
