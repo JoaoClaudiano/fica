@@ -55,7 +55,15 @@
   <footer class="app-footer">
     <p>Você não está sozinho.</p>
   </footer>
+<script type="module">
+  import { sendInAppNotification } from "../../scripts/notificationService.js";
 
-  <script src="../../scripts/app.js"></script>
+  // Exemplo: lembrete de prova
+  sendInAppNotification({
+    type: "exam",
+    name: "Maria",
+    details: { subject: "Matemática" }
+  });
+</script>
 </body>
 </html>
