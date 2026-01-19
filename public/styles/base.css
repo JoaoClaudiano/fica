@@ -75,3 +75,35 @@ main {
   font-size: 0.9rem;
   color: var(--muted);
 }
+
+.login-cards {
+  display: grid;
+  gap: 1rem;
+  margin-top: 1.5rem;
+}
+
+.login-card {
+  border: 2px solid var(--primary);
+  background: none;
+  padding: 1.2rem;
+  border-radius: 8px;
+  text-align: left;
+  font-size: 1rem;
+  cursor: pointer;
+}
+
+.login-card strong {
+  display: block;
+  margin-top: 0.5rem;
+}
+
+.login-card span {
+  display: block;
+  font-size: 0.9rem;
+  color: var(--muted);
+}
+
+.login-card:focus {
+  outline: 3px solid #f59e0b;
+}
+
