@@ -120,6 +120,39 @@ section {
   color: inherit;
 }
 
+.dashboard {
+  padding: 1rem;
+}
+
+.dashboard section {
+  margin-bottom: 1.5rem;
+}
+
+.risk-indicator {
+  padding: 1rem;
+  border-radius: 8px;
+  text-align: center;
+}
+
+.risk-indicator.low {
+  background: #e6f7ec;
+}
+
+.risk-indicator.medium {
+  background: #fff3cd;
+}
+
+.alert-card {
+  border-left: 4px solid #999;
+  padding: 0.75rem;
+  margin-bottom: 0.5rem;
+}
+
+.alert-card.medium {
+  border-color: #f0ad4e;
+}
+
+
 
 
 
