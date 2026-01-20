@@ -2,83 +2,83 @@
 <html lang="pt-BR">
 <head>
   <meta charset="UTF-8" />
-  <title>Dashboard do Aluno — FICA</title>
+  <title>FICA · Painel do Aluno</title>
+
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-  <!-- Estilos -->
-  <link rel="stylesheet" href="/styles/base.css" />
-  <link rel="stylesheet" href="/styles/themes.css" />
-  <link rel="stylesheet" href="/styles/accessibility.css" />
+  <link rel="stylesheet" href="../../styles/base.css" />
+  <link rel="stylesheet" href="../../styles/themes.css" />
+  <link rel="stylesheet" href="../../styles/accessibility.css" />
 </head>
+
 <body>
 
-  <!-- Header -->
-  <div id="header-container"></div>
+  <a href="#main" class="skip-link">Pular para o conteúdo</a>
 
-  <main id="main" role="main">
-    <section class="student-hero">
-      <h1>Bem-vindo, [Nome do Aluno]</h1>
-      <p>Acompanhe sua frequência, bem-estar e conquistas.</p>
+  <div id="header"></div>
+
+  <main id="main" class="dashboard student-dashboard">
+
+    <!-- Saudação -->
+    <section class="dashboard-header">
+      <h2>Olá, João 👋</h2>
+      <p>Esse é o seu acompanhamento no FICA.</p>
     </section>
 
-    <!-- Indicadores -->
-    <section class="student-indicators">
-      <div class="card frequency-card">
-        <h2>Frequência</h2>
-        <p>95% nos últimos 30 dias</p>
+    <!-- Índice de Risco -->
+    <section class="risk-summary" aria-labelledby="risk-title">
+      <h3 id="risk-title">Seu índice de acompanhamento</h3>
+
+      <div class="risk-indicator low" id="riskIndicator">
+        <span class="risk-value">18%</span>
+        <span class="risk-label">Baixo risco</span>
       </div>
-      <div class="card wellbeing-card">
-        <h2>Bem-Estar</h2>
-        <p>Bom</p>
-      </div>
-      <div class="card achievements-card">
-        <h2>Conquistas</h2>
-        <p>3 metas alcançadas</p>
-      </div>
+
+      <p class="risk-explanation" id="riskExplanation">
+        Sua frequência e participação estão boas. Continue assim!
+      </p>
+    </section>
+
+    <!-- Frequência -->
+    <section class="frequency-summary">
+      <h3>Frequência recente</h3>
+      <p><strong>92%</strong> de presença no último mês</p>
+    </section>
+
+    <!-- Bem-estar -->
+    <section class="wellbeing-summary">
+      <h3>Bem-estar</h3>
+      <p>Último registro: 😊 Bem</p>
+
+      <a href="wellbeing.html" class="btn secondary">
+        Registrar como estou me sentindo
+      </a>
     </section>
 
     <!-- Alertas -->
-    <section class="student-alerts">
-      <h2>Alertas Recentes</h2>
+    <section class="alerts-section">
+      <h3>Avisos importantes</h3>
 
-      <div id="alerts-container">
-        <!-- Exemplo de card de alerta usando componente -->
-        <div class="alert-card">
-          <h3>Alerta de Atenção</h3>
-          <p>Faltas recorrentes detectadas nos últimos 7 dias.</p>
-          <span class="tag">Cuidado sugerido</span>
-        </div>
+      <div id="alertsContainer">
+        <!-- alertCard entra aqui -->
       </div>
     </section>
 
-    <!-- Ferramentas Socioemocionais -->
-    <section class="student-tools">
-      <h2>Caixa de Ferramentas</h2>
+    <!-- Conquistas -->
+    <section class="achievements">
+      <h3>Conquistas</h3>
       <ul>
-        <li><button>Exercício de Respiração</button></li>
-        <li><button>Diário de Gratidão</button></li>
-        <li><button>Agenda de Revisão Inteligente</button></li>
+        <li>🏅 Frequência perfeita na semana</li>
+        <li>🔥 7 dias seguidos acessando o FICA</li>
       </ul>
     </section>
+
   </main>
 
-  <!-- Footer -->
-  <div id="footer-container"></div>
+  <div id="footer"></div>
 
-  <!-- Scripts -->
-  <script src="/scripts/router.js"></script>
-  <script src="/scripts/accessibility.js"></script>
-  <script src="/scripts/app.js"></script>
-  <script>
-    // Inserir header e footer via componentes
-    fetch('/components/header.html')
-      .then(r => r.text())
-      .then(html => document.getElementById('header-container').innerHTML = html);
-
-    fetch('/components/footer.html')
-      .then(r => r.text())
-      .then(html => document.getElementById('footer-container').innerHTML = html);
-  </script>
+  <script src="../../scripts/components.js"></script>
+  <script src="../../scripts/studentDashboard.js"></script>
 
 </body>
 </html>
