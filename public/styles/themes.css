@@ -1,5 +1,22 @@
+/* Cores padrão */
+:root {
+  --bg: #f9f9f9;
+  --text: #1a1a1a;
+  --text-muted: #666;
+  --card-bg: #ffffff;
+  --border: #ddd;
+  --primary: #0077cc;
+  --secondary: #00aa88;
+  --success: #28a745;
+  --warning: #ffc107;
+  --danger: #dc3545;
+}
+
+/* Modo escuro */
 body.dark {
-  --background: #0f172a;
-  --text: #f8fafc;
-  --muted: #cbd5f5;
+  --bg: #121212;
+  --text: #e0e0e0;
+  --text-muted: #999;
+  --card-bg: #1e1e1e;
+  --border: #333;
 }
