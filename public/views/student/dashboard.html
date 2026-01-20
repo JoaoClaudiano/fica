@@ -2,68 +2,83 @@
 <html lang="pt-BR">
 <head>
   <meta charset="UTF-8" />
-  <title>Painel do Aluno · FICA</title>
+  <title>Dashboard do Aluno — FICA</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-  <link rel="stylesheet" href="../../styles/base.css" />
-  <link rel="stylesheet" href="../../styles/themes.css" />
-  <link rel="stylesheet" href="../../styles/accessibility.css" />
+  <!-- Estilos -->
+  <link rel="stylesheet" href="/styles/base.css" />
+  <link rel="stylesheet" href="/styles/themes.css" />
+  <link rel="stylesheet" href="/styles/accessibility.css" />
 </head>
 <body>
 
-  <a href="#main" class="skip-link">Pular para o conteúdo</a>
+  <!-- Header -->
+  <div id="header-container"></div>
 
-  <header class="app-header">
-    <h1 class="logo">FICA</h1>
-    <button id="toggle-theme">🌓</button>
-  </header>
+  <main id="main" role="main">
+    <section class="student-hero">
+      <h1>Bem-vindo, [Nome do Aluno]</h1>
+      <p>Acompanhe sua frequência, bem-estar e conquistas.</p>
+    </section>
 
-  <main id="main">
-
-    <section>
-      <h2>Olá 👋</h2>
-      <p>Como você está se sentindo hoje?</p>
-
-      <div class="wellbeing-buttons">
-        <button>🙂 Bem</button>
-        <button>😐 Mais ou menos</button>
-        <button>😟 Não muito bem</button>
+    <!-- Indicadores -->
+    <section class="student-indicators">
+      <div class="card frequency-card">
+        <h2>Frequência</h2>
+        <p>95% nos últimos 30 dias</p>
+      </div>
+      <div class="card wellbeing-card">
+        <h2>Bem-Estar</h2>
+        <p>Bom</p>
+      </div>
+      <div class="card achievements-card">
+        <h2>Conquistas</h2>
+        <p>3 metas alcançadas</p>
       </div>
     </section>
 
-    <section>
-      <h3>Seu acompanhamento</h3>
+    <!-- Alertas -->
+    <section class="student-alerts">
+      <h2>Alertas Recentes</h2>
 
-      <div class="status-card">
-        <strong>Frequência</strong>
-        <p>Boa nas últimas semanas 👍</p>
-      </div>
-
-      <div class="status-card">
-        <strong>Estudos</strong>
-        <p>Você tem uma prova em 3 dias</p>
+      <div id="alerts-container">
+        <!-- Exemplo de card de alerta usando componente -->
+        <div class="alert-card">
+          <h3>Alerta de Atenção</h3>
+          <p>Faltas recorrentes detectadas nos últimos 7 dias.</p>
+          <span class="tag">Cuidado sugerido</span>
+        </div>
       </div>
     </section>
 
-    <section>
-      <h3>Conquistas</h3>
-      <p>🎉 Frequência completa esta semana</p>
+    <!-- Ferramentas Socioemocionais -->
+    <section class="student-tools">
+      <h2>Caixa de Ferramentas</h2>
+      <ul>
+        <li><button>Exercício de Respiração</button></li>
+        <li><button>Diário de Gratidão</button></li>
+        <li><button>Agenda de Revisão Inteligente</button></li>
+      </ul>
     </section>
-
   </main>
 
-  <footer class="app-footer">
-    <p>Você não está sozinho.</p>
-  </footer>
-<script type="module">
-  import { sendInAppNotification } from "../../scripts/notificationService.js";
+  <!-- Footer -->
+  <div id="footer-container"></div>
 
-  // Exemplo: lembrete de prova
-  sendInAppNotification({
-    type: "exam",
-    name: "Maria",
-    details: { subject: "Matemática" }
-  });
-</script>
+  <!-- Scripts -->
+  <script src="/scripts/router.js"></script>
+  <script src="/scripts/accessibility.js"></script>
+  <script src="/scripts/app.js"></script>
+  <script>
+    // Inserir header e footer via componentes
+    fetch('/components/header.html')
+      .then(r => r.text())
+      .then(html => document.getElementById('header-container').innerHTML = html);
+
+    fetch('/components/footer.html')
+      .then(r => r.text())
+      .then(html => document.getElementById('footer-container').innerHTML = html);
+  </script>
+
 </body>
 </html>
