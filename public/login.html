@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <title>Login — FICA</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="/styles/base.css">
+  <link rel="stylesheet" href="/styles/themes.css">
+  <link rel="stylesheet" href="/styles/accessibility.css">
+</head>
+<body>
+
+  <a href="#main" class="skip-link">Pular para o conteúdo principal</a>
+
+  <!-- Header -->
+  <div id="header-container"></div>
+
+  <main id="main" role="main" class="login-page">
+    <section class="login-section">
+      <h1 id="login-title">Login</h1>
+      <p id="login-subtitle">Entre para acessar sua área</p>
+
+      <form id="login-form">
+        <label for="email">E-mail:</label>
+        <input type="email" id="email" required>
+
+        <label for="password">Senha:</label>
+        <input type="password" id="password" required>
+
+        <button type="submit" class="btn primary">Entrar</button>
+      </form>
+
+      <p id="login-message" role="alert" aria-live="polite"></p>
+    </section>
+  </main>
+
+  <!-- Footer -->
+  <div id="footer-container"></div>
+
+  <!-- Scripts -->
+  <script type="module" src="/scripts/app.js" defer></script>
+  <script type="module" src="/scripts/auth.js" defer></script>
+  <script type="module">
+    import { loadComponent } from '/scripts/components.js';
+
+    // Carregar header e footer
+    loadComponent('header-container', '/components/header.html');
+    loadComponent('footer-container', '/components/footer.html');
+
+    // Detectar role do query string ou sessionStorage
+    const urlParams = new URLSearchParams(window.location.search);
+    const role = urlParams.get('role') || sessionStorage.getItem('role') || 'student';
+    sessionStorage.setItem('role', role);
+
+    const titleMap = {
+      student: "Login Aluno",
+      teacher: "Login Professor",
+      manager: "Login Gestor"
+    };
+
+    document.getElementById('login-title').textContent = titleMap[role] || "Login";
+    document.getElementById('login-subtitle').textContent = `Área do ${titleMap[role].split(" ")[1]}`;
+
+    // Form submit
+    const form = document.getElementById('login-form');
+    const message = document.getElementById('login-message');
+
+    form.addEventListener('submit', (e) => {
+      e.preventDefault();
+      const email = document.getElementById('email').value;
+      const password = document.getElementById('password').value;
+
+      // Login mock
+      if(email && password){
+        // Salvar usuário no sessionStorage
+        sessionStorage.setItem('user', JSON.stringify({email, role}));
+
+        // Redirecionar para dashboard correto
+        const redirectMap = {
+          student: '/views/student/dashboard.html',
+          teacher: '/views/teacher/dashboard.html',
+          manager: '/views/institutional/impact.html'
+        };
+
+        window.location.href = redirectMap[role] || '/views/student/dashboard.html';
+      } else {
+        message.textContent = "Preencha e-mail e senha corretamente.";
+      }
+    });
+  </script>
+
+</body>
+</html>
