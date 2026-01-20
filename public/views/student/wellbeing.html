@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <title>Bem-Estar do Aluno — FICA</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <!-- Estilos -->
+  <link rel="stylesheet" href="/styles/base.css" />
+  <link rel="stylesheet" href="/styles/themes.css" />
+  <link rel="stylesheet" href="/styles/accessibility.css" />
+</head>
+<body>
+
+  <!-- Header -->
+  <div id="header-container"></div>
+
+  <main role="main">
+    <section class="wellbeing-hero">
+      <h1>Bem-estar de [Nome do Aluno]</h1>
+      <p>Registre seu estado emocional e acompanhe sua evolução.</p>
+    </section>
+
+    <!-- Check-in diário -->
+    <section class="wellbeing-checkin">
+      <h2>Check-in do Dia</h2>
+      <form id="checkin-form">
+        <label for="mood">Como você se sente hoje?</label>
+        <select id="mood" name="mood" required>
+          <option value="">Selecione</option>
+          <option value="otimo">Ótimo 😄</option>
+          <option value="bom">Bom 🙂</option>
+          <option value="regular">Regular 😐</option>
+          <option value="baixo">Baixo 😟</option>
+        </select>
+
+        <label for="notes">Notas ou comentários (opcional)</label>
+        <textarea id="notes" name="notes" rows="3" placeholder="Escreva algo..."></textarea>
+
+        <button type="submit" class="btn primary">Enviar Check-in</button>
+      </form>
+    </section>
+
+    <!-- Histórico de bem-estar -->
+    <section class="wellbeing-history">
+      <h2>Histórico de Bem-Estar</h2>
+      <div id="history-container">
+        <div class="empty-state" aria-live="polite">
+          Nenhum registro até agora. Comece hoje mesmo!
+        </div>
+      </div>
+    </section>
+
+    <!-- Gamificação / Metas -->
+    <section class="wellbeing-goals">
+      <h2>Suas Conquistas</h2>
+      <div class="goals-container">
+        <div class="goal-card">
+          <h3>Check-ins Semanais</h3>
+          <p>Meta: 5 check-ins</p>
+          <p>Concluído: 2/5 ✅</p>
+        </div>
+        <div class="goal-card">
+          <h3>Semana Sem Faltas</h3>
+          <p>Meta: 7 dias de frequência perfeita</p>
+          <p>Concluído: 3/7 🏆</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Ferramentas Socioemocionais -->
+    <section class="wellbeing-tools">
+      <h2>Ferramentas</h2>
+      <ul>
+        <li><button>Exercício de Respiração</button></li>
+        <li><button>Diário de Gratidão</button></li>
+        <li><button>Agenda de Revisão Inteligente</button></li>
+      </ul>
+    </section>
+
+  </main>
+
+  <!-- Footer -->
+  <div id="footer-container"></div>
+
+  <!-- Scripts -->
+  <script src="/scripts/router.js"></script>
+  <script src="/scripts/accessibility.js"></script>
+  <script src="/scripts/app.js"></script>
+  <script>
+    // Inserir header e footer via componentes
+    fetch('/components/header.html')
+      .then(r => r.text())
+      .then(html => document.getElementById('header-container').innerHTML = html);
+
+    fetch('/components/footer.html')
+      .then(r => r.text())
+      .then(html => document.getElementById('footer-container').innerHTML = html);
+
+    // Mock de submissão do check-in
+    const form = document.getElementById('checkin-form');
+    form.addEventListener('submit', e => {
+      e.preventDefault();
+      const mood = document.getElementById('mood').value;
+      const notes = document.getElementById('notes').value;
+      alert(`Check-in enviado: ${mood} — ${notes}`);
+      form.reset();
+    });
+  </script>
+
+</body>
+</html>
