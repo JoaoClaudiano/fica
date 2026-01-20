@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <title>FICA — Frequência, Inclusão e Cuidado Ativo</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Plataforma de acompanhamento educacional e bem-estar escolar para prevenção da evasão." />
+
+  <!-- SEO / Redes Sociais -->
+  <meta property="og:title" content="FICA - Frequência, Inclusão e Cuidado Ativo" />
+  <meta property="og:description" content="Acompanhe frequência, aprendizado e bem-estar dos alunos." />
+  <meta property="og:image" content="/assets/icons/icon-512.png" />
+
+  <!-- Manifest PWA -->
+  <link rel="manifest" href="manifest.json" />
+
+  <!-- Estilos -->
+  <link rel="stylesheet" href="styles/base.css" />
+  <link rel="stylesheet" href="styles/themes.css" />
+  <link rel="stylesheet" href="styles/accessibility.css" />
+</head>
+<body>
+
+  <a href="#main" class="skip-link">Pular para o conteúdo principal</a>
+
+  <!-- Header -->
+  <div id="header-container"></div>
+
+  <main id="main" role="main">
+    <!-- Hero -->
+    <section class="hero">
+      <h1>Bem-vindo ao FICA</h1>
+      <p>Prevenir a evasão é cuidar. Acompanhe frequência, aprendizado e bem-estar dos alunos.</p>
+
+      <div class="cta-group">
+        <button class="btn primary" data-role="student">Login Aluno</button>
+        <button class="btn secondary" data-role="teacher">Login Professor</button>
+        <button class="btn tertiary" data-role="manager">Login Gestor</button>
+      </div>
+
+      <!-- Mini Gamificação -->
+      <div class="mini-progress" aria-label="Progresso de check-ins">
+        <span>Seu progresso: 2/5 check-ins</span>
+        <div class="progress-bar">
+          <div style="width:40%"></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Funcionalidades -->
+    <section class="features">
+      <h2>O que você pode fazer no FICA</h2>
+      <div class="feature-cards">
+        <div class="card" tabindex="0">
+          <h3>Alunos</h3>
+          <p>Registre seu bem-estar, acompanhe metas e alertas de frequência e notas.</p>
+          <img src="/assets/illustrations/student.png" alt="Aluno usando a plataforma">
+          <a href="views/student/dashboard.html" class="btn secondary">Acessar Dashboard</a>
+        </div>
+        <div class="card" tabindex="0">
+          <h3>Professores</h3>
+          <p>Gerencie turmas, acompanhe alertas e casos, visualize histórico de intervenções.</p>
+          <img src="/assets/illustrations/teacher.png" alt="Professor acompanhando alunos">
+          <a href="views/teacher/dashboard.html" class="btn secondary">Acessar Dashboard</a>
+        </div>
+        <div class="card" tabindex="0">
+          <h3>Gestores</h3>
+          <p>Mapas de risco, indicadores e relatórios estratégicos da rede escolar.</p>
+          <img src="/assets/illustrations/manager.png" alt="Gestor visualizando painéis">
+          <a href="views/institutional/impact.html" class="btn secondary">Ver Painel</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- Sobre o projeto -->
+    <section class="about-project">
+      <h2>FICA — Frequência, Inclusão e Cuidado Ativo</h2>
+      <p>Ferramenta open source para escolas, integrando tecnologia, dados e cuidado socioemocional para prevenir a evasão escolar.</p>
+      <div class="cta-group">
+        <a href="docs/manifesto.md" class="btn primary">Leia o manifesto</a>
+        <a href="docs/ethics.md" class="btn secondary">Ética e Privacidade</a>
+        <a href="docs/roadmap.md" class="btn secondary">Roadmap do Projeto</a>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- Footer -->
+  <div id="footer-container"></div>
+
+  <!-- Scripts -->
+  <script type="module" src="scripts/app.js" defer></script>
+  <script type="module" src="scripts/accessibility.js" defer></script>
+  <script type="module" src="scripts/router.js" defer></script>
+  <script type="module" src="scripts/textToSpeech.js" defer></script>
+  <script type="module">
+    import { loadComponent } from '/scripts/components.js';
+
+    // Header e Footer via components.js
+    loadComponent('header-container', '/components/header.html');
+    loadComponent('footer-container', '/components/footer.html');
+
+    // Login por perfil
+    document.querySelectorAll('.btn[data-role]').forEach(btn => {
+      btn.addEventListener('click', () => {
+        const role = btn.dataset.role;
+        sessionStorage.setItem('role', role);
+        window.location.href = '/views/login.html?role=' + role;
+      });
+    });
+  </script>
+
+</body>
+</html>
