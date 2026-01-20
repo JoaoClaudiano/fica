@@ -2,84 +2,99 @@
 <html lang="pt-BR">
 <head>
   <meta charset="UTF-8" />
-  <title>Painel do Professor · FICA</title>
+  <title>Dashboard do Professor — FICA</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-  <link rel="stylesheet" href="../../styles/base.css" />
-  <link rel="stylesheet" href="../../styles/themes.css" />
-  <link rel="stylesheet" href="../../styles/accessibility.css" />
+  <!-- Estilos -->
+  <link rel="stylesheet" href="/styles/base.css" />
+  <link rel="stylesheet" href="/styles/themes.css" />
+  <link rel="stylesheet" href="/styles/accessibility.css" />
 </head>
 <body>
 
-  <a href="#main" class="skip-link">Pular para o conteúdo</a>
+  <!-- Header -->
+  <div id="header-container"></div>
 
-  <header class="app-header">
-    <h1 class="logo">FICA</h1>
-    <button id="toggle-theme" aria-label="Alternar modo de cor">🌓</button>
-  </header>
+  <main id="main" role="main">
+    <section class="teacher-hero">
+      <h1>Bem-vindo, [Nome do Professor]</h1>
+      <p>Acompanhe turmas, alertas e casos de atenção.</p>
+    </section>
 
-  <main id="main">
+    <!-- Painel de Turma -->
+    <section class="teacher-classes">
+      <h2>Minha Turma</h2>
+      <table>
+        <thead>
+          <tr>
+            <th>Aluno</th>
+            <th>Frequência</th>
+            <th>Bem-Estar</th>
+            <th>Alertas</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Maria Silva</td>
+            <td>92%</td>
+            <td>Regular</td>
+            <td>1</td>
+          </tr>
+          <tr>
+            <td>João Souza</td>
+            <td>85%</td>
+            <td>Baixo</td>
+            <td>2</td>
+          </tr>
+        </tbody>
+      </table>
+    </section>
 
-    <!-- RESUMO -->
-    <section>
-      <h2>Visão geral da turma</h2>
-
-      <div class="summary-grid">
-        <div class="summary-card risk-high">
-          <strong>3</strong>
-          <span>Alunos em alto risco</span>
-        </div>
-
-        <div class="summary-card risk-medium">
-          <strong>7</strong>
-          <span>Risco moderado</span>
-        </div>
-
-        <div class="summary-card">
-          <strong>22</strong>
-          <span>Total de alunos</span>
+    <!-- Alertas Recentes -->
+    <section class="teacher-alerts">
+      <h2>Alertas Recentes</h2>
+      <div id="alerts-container">
+        <div class="alert-card">
+          <h3>Alerta de Atenção</h3>
+          <p>Aluno apresentou faltas recorrentes e sinalizou queda no bem-estar.</p>
+          <span class="tag">Intervenção sugerida</span>
         </div>
       </div>
     </section>
 
-    <!-- ALERTAS -->
-    <section>
-      <h3>Alertas prioritários</h3>
-
-      <article class="alert-card high">
-        <h4>Maria S.</h4>
-        <p>
-          Faltas frequentes + bem-estar negativo
-        </p>
-<a href="case.html?id=maria" class="btn small">Ver caso</a>
-      </article>
-
-      <article class="alert-card medium">
-        <h4>João P.</h4>
-        <p>
-          Queda de desempenho recente
-        </p>
-<a href="case.html?id=joao" class="btn small">Ver caso</a>
-      </article>
-    </section>
-
-    <!-- AÇÕES RÁPIDAS -->
-    <section>
-      <h3>Ações rápidas</h3>
-
-      <div class="quick-actions">
-        <button class="btn secondary">Registrar conversa</button>
-        <button class="btn secondary">Contatar família</button>
-        <button class="btn secondary">Encaminhar apoio</button>
+    <!-- Linha do Tempo de Casos -->
+    <section class="teacher-cases">
+      <h2>Linha do Tempo de Ações</h2>
+      <div id="cases-container">
+        <div class="case-timeline">
+          <ul>
+            <li><strong>10/03</strong> — Conversa individual com o aluno</li>
+            <li><strong>15/03</strong> — Contato com a família</li>
+            <li><strong>20/03</strong> — Sessão de mentoria</li>
+          </ul>
+        </div>
       </div>
     </section>
 
   </main>
 
-  <footer class="app-footer">
-    <p>Cuidado não é punição. É acompanhamento.</p>
-  </footer>
+  <!-- Footer -->
+  <div id="footer-container"></div>
 
-  <script src="../../scripts/app.js"></script>
+  <!-- Scripts -->
+  <script src="/scripts/router.js"></script>
+  <script src="/scripts/accessibility.js"></script>
+  <script src="/scripts/app.js"></script>
+  <script>
+    // Inserir header e footer via componentes
+    fetch('/components/header.html')
+      .then(r => r.text())
+      .then(html => document.getElementById('header-container').innerHTML = html);
+
+    fetch('/components/footer.html')
+      .then(r => r.text())
+      .then(html => document.getElementById('footer-container').innerHTML = html);
+  </script>
+
 </body>
 </html>
