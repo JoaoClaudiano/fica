@@ -1,17 +1,17 @@
 <header class="app-header" role="banner">
-  <nav class="nav">
-    <a href="/index.html" class="logo">FICA</a>
+  <div class="header-left">
+    <h1 class="logo">
+      <a href="/fica/index.html">FICA</a>
+    </h1>
+  </div>
 
-    <button class="menu-toggle" aria-label="Abrir menu">
-      ☰
-    </button>
-
-    <ul class="nav-links">
-      <li><a href="/views/institutional/about.html">Sobre</a></li>
-      <li><a href="/views/institutional/methodology.html">Metodologia</a></li>
-      <li><a href="/views/institutional/impact.html">Impacto</a></li>
-      <li><a href="/views/institutional/ethics.html">Ética</a></li>
-      <li><a href="/views/login.html" class="btn">Entrar</a></li>
-    </ul>
+  <nav class="header-nav" aria-label="Navegação principal">
+    <a href="/fica/public/views/login.html">Entrar</a>
+    <a href="/fica/public/views/institutional/about.html">Sobre</a>
+    <a href="/fica/docs/manifesto.md">Manifesto</a>
   </nav>
+
+  <div class="header-actions">
+    <button id="toggle-theme" aria-label="Alternar modo de cor">🌓</button>
+  </div>
 </header>
