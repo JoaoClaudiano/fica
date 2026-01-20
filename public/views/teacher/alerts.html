@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <title>Alertas da Turma — FICA</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <!-- Estilos -->
+  <link rel="stylesheet" href="/styles/base.css" />
+  <link rel="stylesheet" href="/styles/themes.css" />
+  <link rel="stylesheet" href="/styles/accessibility.css" />
+</head>
+<body>
+
+  <!-- Header -->
+  <div id="header-container"></div>
+
+  <main role="main">
+    <section class="teacher-alerts-page">
+      <h1>Alertas da Turma</h1>
+      <p>Visualize todos os alertas recentes e tome ações preventivas.</p>
+
+      <div id="alerts-container">
+        <div class="alert-card">
+          <h3>Alerta de Atenção: Maria Silva</h3>
+          <p>Faltas recorrentes e baixo bem-estar detectados.</p>
+          <span class="tag">Intervenção recomendada</span>
+        </div>
+
+        <div class="alert-card">
+          <h3>Alerta de Atenção: João Souza</h3>
+          <p>Queda de desempenho nas últimas provas.</p>
+          <span class="tag">Monitorar de perto</span>
+        </div>
+
+        <!-- Empty State -->
+        <div class="empty-state" aria-live="polite">
+          Nenhum novo alerta por enquanto. Ótimo trabalho!
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- Footer -->
+  <div id="footer-container"></div>
+
+  <!-- Scripts -->
+  <script src="/scripts/router.js"></script>
+  <script src="/scripts/accessibility.js"></script>
+  <script src="/scripts/app.js"></script>
+  <script>
+    fetch('/components/header.html')
+      .then(r => r.text())
+      .then(html => document.getElementById('header-container').innerHTML = html);
+
+    fetch('/components/footer.html')
+      .then(r => r.text())
+      .then(html => document.getElementById('footer-container').innerHTML = html);
+  </script>
+
+</body>
+</html>
