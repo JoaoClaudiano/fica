@@ -1,23 +1,37 @@
+/* Skip link */
 .skip-link {
   position: absolute;
-  left: -999px;
-  top: auto;
-  width: 1px;
-  height: 1px;
-  overflow: hidden;
-}
-
-.skip-link:focus {
-  position: static;
-  width: auto;
-  height: auto;
-  padding: 0.5rem;
-  background: #000;
+  top: -40px;
+  left: 0;
+  background: var(--primary);
   color: #fff;
-  z-index: 1000;
+  padding: 0.5rem;
+  z-index: 100;
+  transition: top 0.3s;
+}
+.skip-link:focus {
+  top: 0;
 }
 
-button:focus,
-a:focus {
-  outline: 3px solid #f59e0b;
+/* Foco para navegação por teclado */
+:focus {
+  outline: 3px solid var(--primary);
+  outline-offset: 2px;
+}
+
+/* Alta visibilidade / contraste */
+.high-contrast {
+  background-color: #000 !important;
+  color: #fff !important;
+}
+
+/* Texto legível */
+body, input, select, textarea, button {
+  font-size: 1rem;
+}
+
+/* Leitura em voz alta */
+[aria-live] {
+  position: absolute;
+  left: -9999px;
 }
