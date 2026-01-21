@@ -14,3 +14,9 @@
     "format": "prettier --write public/**/*.{js,html,css} functions/**/*.js"
   }
 }
+
+{
+  "scripts": {
+    "init-config": "node scripts/initializeConfig.js"
+  }
+}
