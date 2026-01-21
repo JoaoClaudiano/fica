@@ -1,22 +1,25 @@
 rules_version = '2';
 service cloud.firestore {
   match /databases/{database}/documents {
-
+    // Regras para coleção de usuários
     match /users/{userId} {
-      allow read, write: if request.auth != null && request.auth.uid == userId;
-    }
-
-    match /students/{studentId} {
       allow read: if request.auth != null;
-      allow write: if false;
+      allow write: if request.auth != null && request.auth.uid == userId;
     }
-
-    match /attendance/{docId} {
-      allow read, write: if request.auth != null;
+    
+    // Regras para casos/alertas
+    match /cases/{caseId} {
+      allow read: if request.auth != null;
+      allow write: if request.auth != null && 
+        (request.auth.token.role in ['teacher', 'institutional'] ||
+         resource.data.studentId == request.auth.uid);
     }
-
-    match /wellbeing/{docId} {
-      allow read, write: if request.auth != null;
+    
+    // Regras para intervenções
+    match /interventions/{interventionId} {
+      allow read: if request.auth != null;
+      allow write: if request.auth != null && 
+        request.auth.token.role in ['teacher', 'institutional'];
     }
   }
 }
