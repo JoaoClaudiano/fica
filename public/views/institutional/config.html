@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html lang="pt-BR" data-theme="light">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Configurações do Sistema - FICA</title>
+    <link rel="stylesheet" href="../../styles/base.css">
+    <link rel="stylesheet" href="../../styles/themes.css">
+    <link rel="stylesheet" href="../../styles/config.css">
+</head>
+<body>
+    <!-- Header será carregado dinamicamente -->
+    <div id="header"></div>
+    
+    <!-- Loading State -->
+    <div id="loading" class="loading-overlay">
+        <div class="loading-spinner"></div>
+        <p>Carregando configurações...</p>
+    </div>
+    
+    <!-- Error State -->
+    <div id="error-container" class="error-container hidden">
+        <div class="error-card">
+            <h3>❌ Erro ao carregar configurações</h3>
+            <p id="error-message"></p>
+            <button onclick="location.reload()" class="btn btn-primary">
+                Tentar novamente
+            </button>
+        </div>
+    </div>
+    
+    <main class="container config-container">
+        <div class="config-header">
+            <h1>⚙️ Configurações do Sistema</h1>
+            <p class="subtitle">Gerencie os parâmetros do sistema FICA</p>
+            <div class="config-actions">
+                <button id="save-all" class="btn btn-success" disabled>
+                    💾 Salvar todas as alterações
+                </button>
+                <button id="reload-config" class="btn btn-secondary">
+                    🔄 Recarregar
+                </button>
+                <button id="export-config" class="btn btn-outline">
+                    📤 Exportar
+                </button>
+            </div>
+        </div>
+        
+        <div class="config-tabs">
+            <button class="tab-btn active" data-tab="risk">📊 Risco</button>
+            <button class="tab-btn" data-tab="notifications">🔔 Notificações</button>
+            <button class="tab-btn" data-tab="interface">🎨 Interface</button>
+            <button class="tab-btn" data-tab="system">⚙️ Sistema</button>
+        </div>
+        
+        <!-- Configurações de Risco -->
+        <section id="risk-tab" class="config-section active">
+            <h2>📊 Configurações de Avaliação de Risco</h2>
+            
+            <div class="config-card">
+                <h3>Limites de Risco</h3>
+                <p class="card-description">Defina os limites para cada nível de risco (0-100)</p>
+                
+                <div class="thresholds-grid">
+                    <div class="threshold-card low">
+                        <div class="threshold-header">
+                            <span class="threshold-icon">✅</span>
+                            <h4>Baixo</h4>
+                        </div>
+                        <div class="threshold-controls">
+                            <label>Até:</label>
+                            <input type="number" 
+                                   id="low-threshold" 
+                                   min="0" 
+                                   max="100" 
+                                   class="threshold-input">
+                            <span class="threshold-unit">pontos</span>
+                        </div>
+                        <div class="threshold-color">
+                            <label>Cor:</label>
+                            <input type="color" 
+                                   id="low-color" 
+                                   value="#4CAF50">
+                        </div>
+                    </div>
+                    
+                    <div class="threshold-card medium">
+                        <div class="threshold-header">
+                            <span class="threshold-icon">⚠️</span>
+                            <h4>Médio</h4>
+                        </div>
+                        <div class="threshold-controls">
+                            <label>De:</label>
+                            <input type="number" 
+                                   id="medium-min" 
+                                   min="0" 
+                                   max="100" 
+                                   class="threshold-input">
+                            <label>Até:</label>
+                            <input type="number" 
+                                   id="medium-max" 
+                                   min="0" 
+                                   max="100" 
+                                   class="threshold-input">
+                        </div>
+                        <div class="threshold-color">
+                            <label>Cor:</label>
+                            <input type="color" 
+                                   id="medium-color" 
+                                   value="#FFC107">
+                        </div>
+                    </div>
+                    
+                    <div class="threshold-card high">
+                        <div class="threshold-header">
+                            <span class="threshold-icon">🔴</span>
+                            <h4>Alto</h4>
+                        </div>
+                        <div class="threshold-controls">
+                            <label>De:</label>
+                            <input type="number" 
+                                   id="high-min" 
+                                   min="0" 
+                                   max="100" 
+                                   class="threshold-input">
+                            <label>Até:</label>
+                            <input type="number" 
+                                   id="high-max" 
+                                   min="0" 
+                                   max="100" 
+                                   class="threshold-input">
+                        </div>
+                        <div class="threshold-color">
+                            <label>Cor:</label>
+                            <input type="color" 
+                                   id="high-color" 
+                                   value="#FF9800">
+                        </div>
+                    </div>
+                    
+                    <div class="threshold-card critical">
+                        <div class="threshold-header">
+                            <span class="threshold-icon">🚨</span>
+                            <h4>Crítico</h4>
+                        </div>
+                        <div class="threshold-controls">
+                            <label>Acima de:</label>
+                            <input type="number" 
+                                   id="critical-threshold" 
+                                   min="0" 
+                                   max="100" 
+                                   class="threshold-input">
+                        </div>
+                        <div class="threshold-color">
+                            <label>Cor:</label>
+                            <input type="color" 
+                                   id="critical-color" 
+                                   value="#F44336">
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="config-card">
+                <h3>Pesos dos Indicadores</h3>
+                <p class="card-description">Ajuste a importância de cada indicador no cálculo de risco</p>
+                <p class="card-hint">Total: <span id="total-weight">0</span>/1.00</p>
+                
+                <div id="weights-container" class="weights-container">
+                    <!-- Os pesos serão carregados dinamicamente aqui -->
+                </div>
+            </div>
+        </section>
+        
+        <!-- Configurações de Notificações -->
+        <section id="notifications-tab" class="config-section">
+            <h2>🔔 Configurações de Notificação</h2>
+            
+            <div class="config-card">
+                <h3>Templates de Notificação</h3>
+                <p class="card-description">Personalize as mensagens enviadas para diferentes situações</p>
+                
+                <div class="template-selector">
+                    <select id="template-select" class="template-select">
+                        <option value="">Selecione um template...</option>
+                        <option value="risk_alert_teacher">Alerta de Risco (Professor)</option>
+                        <option value="risk_alert_student">Alerta de Risco (Estudante)</option>
+                        <option value="intervention_reminder">Lembrete de Intervenção</option>
+                        <option value="weekly_summary">Resumo Semanal</option>
+                    </select>
+                </div>
+                
+                <div id="template-editor" class="template-editor hidden">
+                    <div class="form-group">
+                        <label>Assunto:</label>
+                        <input type="text" 
+                               id="template-subject" 
+                               class="template-input"
+                               placeholder="Ex: Alerta de Risco {level}">
+                    </div>
+                    
+                    <div class="form-group">
+                        <label>Mensagem:</label>
+                        <textarea id="template-body" 
+                                  class="template-textarea"
+                                  rows="6"
+                                  placeholder="Ex: O estudante {student_name} foi identificado..."></textarea>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label>Variáveis disponíveis:</label>
+                        <div id="template-variables" class="variables-list">
+                            <!-- Variáveis serão carregadas dinamicamente -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <!-- Configurações da Interface -->
+        <section id="interface-tab" class="config-section">
+            <h2>🎨 Configurações de Interface</h2>
+            <!-- Conteúdo será implementado -->
+        </section>
+        
+        <!-- Configurações do Sistema -->
+        <section id="system-tab" class="config-section">
+            <h2>⚙️ Configurações do Sistema</h2>
+            <!-- Conteúdo será implementado -->
+        </section>
+    </main>
+    
+    <div id="footer"></div>
+    
+    <!-- Scripts -->
+    <script src="../../scripts/auth.js"></script>
+    <script src="../../scripts/components.js"></script>
+    <script src="../../scripts/utils/api.js"></script>
+    <script src="../../scripts/services/configService.js"></script>
+    <script src="../../scripts/views/config.js"></script>
+</body>
+</html>
