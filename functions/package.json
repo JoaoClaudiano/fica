@@ -8,3 +8,9 @@
     "firebase-functions": "^4.5.0"
   }
 }
+{
+  "scripts": {
+    "lint": "eslint public/scripts/ functions/ --fix",
+    "format": "prettier --write public/**/*.{js,html,css} functions/**/*.js"
+  }
+}
